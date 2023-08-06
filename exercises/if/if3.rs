@@ -29,34 +29,27 @@ pub fn animal_habitat(animal: &str) -> &'static str {
     habitat
 }
 
-// #[cfg(test)]
-// mod tests {
-//     use super::*;
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-//     #[test]
-//     fn gopher_lives_in_burrow() {
-//         assert_eq!(animal_habitat("gopher"), "Burrow")
-//     }
+    #[test]
+    fn gopher_lives_in_burrow() {
+        assert_eq!(animal_habitat("gopher"), "Burrow")
+    }
 
-//     #[test]
-//     fn snake_lives_in_desert() {
-//         assert_eq!(animal_habitat("snake"), "Desert")
-//     }
+    #[test]
+    fn snake_lives_in_desert() {
+        assert_eq!(animal_habitat("snake"), "Desert")
+    }
 
-//     #[test]
-//     fn crab_lives_on_beach() {
-//         assert_eq!(animal_habitat("crab"), "Beach")
-//     }
+    #[test]
+    fn crab_lives_on_beach() {
+        assert_eq!(animal_habitat("crab"), "Beach")
+    }
 
-//     #[test]
-//     fn unknown_animal() {
-//         assert_eq!(animal_habitat("dinosaur"), "Unknown")
-//     }
-// }
-fn main() {
-    let a = animal_habitat("gopher");
-    let b = animal_habitat("snake");
-    let c = animal_habitat("crab");
-    let d = animal_habitat("dinosaur");
-    println!("{},{},{},{}",a,b,c,d);
+    #[test]
+    fn unknown_animal() {
+        assert_eq!(animal_habitat("dinosaur"), "Unknown")
+    }
 }
