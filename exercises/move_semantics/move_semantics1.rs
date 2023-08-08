@@ -12,6 +12,7 @@ fn main() {
 
     println!("{} has length {} content `{:?}`", "vec1", vec1.len(), vec1);
 
+    let mut vec1 = vec1;
     vec1.push(88);
 
     println!("{} has length {} content `{:?}`", "vec1", vec1.len(), vec1);
