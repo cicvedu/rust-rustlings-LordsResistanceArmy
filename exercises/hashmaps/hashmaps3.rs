@@ -39,6 +39,23 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         // will be the number of goals conceded from team_2, and similarly
         // goals scored by team_2 will be the number of goals conceded by
         // team_1.
+        let vic = scores
+        .entry(team_1_name)
+        .or_insert( Team { 
+                goals_scored: (0),
+                goals_conceded: (0) 
+            });
+        vic.goals_scored += team_1_score;
+        vic.goals_conceded += team_2_score;
+        
+        let fail = scores
+        .entry(team_2_name)
+        .or_insert( Team { 
+            goals_scored: (0),
+            goals_conceded: (0) 
+        });
+        fail.goals_scored += team_2_score;
+        fail.goals_conceded += team_1_score;
     }
     scores
 }
@@ -62,6 +79,8 @@ mod tests {
 
         let mut keys: Vec<&String> = scores.keys().collect();
         keys.sort();
+        println!("------keys------{:?}",keys);
+
         assert_eq!(
             keys,
             vec!["England", "France", "Germany", "Italy", "Poland", "Spain"]
