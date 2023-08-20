@@ -18,33 +18,16 @@
 
 // I AM NOT DONE
 
-pub struct ReportCard {
-    pub grade: f32,
+pub struct ReportCard<T> {
+    pub grade: T,
     pub student_name: String,
     pub student_age: u8,
 }
 
-impl ReportCard {
-
-    pub fn alphabetic_grade(&self) -> String {
-        if self.grade >= 2.0 {
-            "A+".to_string()
-        } else if self.grade >= 1.7 {
-            "A".to_string()
-        } else if self.grade >= 1.5 {
-            "A-".to_string()
-        } else {
-            "B".to_string()
-        }
-    }
-
+impl<T:std::fmt::Display> ReportCard<T> {
     pub fn print(&self) -> String {
         format!("{} ({}) - achieved a grade of {}",
             &self.student_name, &self.student_age, &self.grade)
-    }
-    pub fn print2(&self) -> String {
-        format!("{} ({}) - achieved a grade of {}",
-            &self.student_name, &self.student_age, self.alphabetic_grade())
     }
 }
 
@@ -69,12 +52,12 @@ mod tests {
     fn generate_alphabetic_report_card() {
         // TODO: Make sure to change the grade here after you finish the exercise.
         let report_card = ReportCard {
-            grade: 2.1,
+            grade: "A+",
             student_name: "Gary Plotter".to_string(),
             student_age: 11,
         };
         assert_eq!(
-            report_card.print2(),
+            report_card.print(),
             "Gary Plotter (11) - achieved a grade of A+"
         );
     }

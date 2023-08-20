@@ -34,15 +34,27 @@ mod my_module {
     // TODO: Complete the function signature!
     pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> {
         // TODO: Complete the output declaration!
-        let mut output: Vec<String> = vec![];
+        let mut output: Vec<_> = vec![];
         for (string, command) in input.iter() {
             // TODO: Complete the function body. You can do it!
-            let transformed_string = match command {
-                Command::Uppercase => string.to_uppercase(),
-                Command::Trim => string.trim().to_string(),
-                Command::Append(n) => string.clone() + &"bar".repeat(*n),
-            };
-            output.push(transformed_string);
+            match command {
+                Command::Uppercase => {
+                    output.push(string.to_uppercase());
+                },
+                Command::Trim => {
+                    output.push(string.trim().to_string());
+                },
+                Command::Append(num) => {
+                    let mut buf_str = string.to_string();
+                    for _i in 0..*num{
+                        buf_str.push_str("bar");
+                    }
+                    output.push(buf_str.to_string());
+                },
+                _ => {
+
+                },
+            }
         }
         output
     }
@@ -51,7 +63,7 @@ mod my_module {
 #[cfg(test)]
 mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
-    use super::my_module::transformer;
+    use crate::my_module::transformer;
     use super::Command;
 
     #[test]
