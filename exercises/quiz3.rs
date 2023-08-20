@@ -25,9 +25,26 @@ pub struct ReportCard {
 }
 
 impl ReportCard {
+
+    pub fn alphabetic_grade(&self) -> String {
+        if self.grade >= 2.0 {
+            "A+".to_string()
+        } else if self.grade >= 1.7 {
+            "A".to_string()
+        } else if self.grade >= 1.5 {
+            "A-".to_string()
+        } else {
+            "B".to_string()
+        }
+    }
+
     pub fn print(&self) -> String {
         format!("{} ({}) - achieved a grade of {}",
             &self.student_name, &self.student_age, &self.grade)
+    }
+    pub fn print2(&self) -> String {
+        format!("{} ({}) - achieved a grade of {}",
+            &self.student_name, &self.student_age, self.alphabetic_grade())
     }
 }
 
@@ -57,7 +74,7 @@ mod tests {
             student_age: 11,
         };
         assert_eq!(
-            report_card.print(),
+            report_card.print2(),
             "Gary Plotter (11) - achieved a grade of A+"
         );
     }
