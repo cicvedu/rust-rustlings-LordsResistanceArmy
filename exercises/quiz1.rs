@@ -13,6 +13,14 @@
 //
 // No hints this time ;)
 
+fn calculate_price_of_apples(quantity: u32) -> u32 {
+    if quantity > 40 {
+        quantity
+    } else {
+        quantity * 2
+    }
+}
+
 // I AM NOT DONE
 
 // Put your function here!
