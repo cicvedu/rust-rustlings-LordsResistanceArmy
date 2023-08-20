@@ -4,4 +4,5 @@ fn main() {
     let timestamp_str = timestamp.to_string();
     env::set_var("TEST_FOO", timestamp_str);
     println!("cargo:rustc-env=TEST_FOO={}",&timestamp_str);
+    println!("cargo:rustc-cfg=feature=\"pass\"");
 }
