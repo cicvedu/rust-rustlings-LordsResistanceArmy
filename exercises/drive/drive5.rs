@@ -9,7 +9,9 @@
 
 
 extern {
+    #[link(name = "drive5")]
     fn my_demo_function(a:u32) -> u32;
+    #[link(name = "drive5")]
     fn my_demo_function_alias(a:u32) -> u32;
 }
 
